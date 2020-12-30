@@ -1,12 +1,12 @@
-import 'package:delivast_trial/pages/login.dart';
+import 'package:delivast_trial/pages/splash_screen.dart';
 import 'package:delivast_trial/resources/colors.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(DelivastApp());
 }
 
-class MyApp extends StatelessWidget {
+class DelivastApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
               secondary: secondaryColor,
             ),
       ),
-      home: LoginPage(),
+      home: SplashScreen(),
     );
   }
 }
