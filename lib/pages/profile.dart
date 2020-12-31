@@ -1,5 +1,4 @@
 import 'package:delivast_trial/models/user.dart';
-import 'package:delivast_trial/pages/page_wrapper.dart';
 import 'package:delivast_trial/resources/colors.dart';
 import 'package:delivast_trial/resources/constants.dart';
 import 'package:delivast_trial/resources/images.dart';
@@ -9,6 +8,8 @@ import 'package:delivast_trial/utils/validator.dart';
 import 'package:delivast_trial/widgets/action_button.dart';
 import 'package:delivast_trial/widgets/input_field.dart';
 import 'package:flutter/material.dart';
+
+import 'login.dart';
 
 class ProfilePage extends StatefulWidget {
   final User user;
@@ -152,7 +153,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 validator: (value) {
                   if (value.isEmpty) {
                     return emptyPhoneError;
-                  } else if (Validator.validatePhone(value)) {
+                  } else if (Validator.validatePhone(
+                      value.replaceAll("(", "").replaceAll(")", "").replaceAll("-", ""))) {
                     return null;
                   } else {
                     return phoneError;
@@ -207,7 +209,7 @@ class _ProfilePageState extends State<ProfilePage> {
     await injector<HiveHelper>().deleteData(loginKey);
 
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => PageWrapper()),
+      MaterialPageRoute(builder: (_) => LoginPage()),
     );
   }
 }

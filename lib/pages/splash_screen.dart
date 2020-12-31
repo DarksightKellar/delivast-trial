@@ -1,21 +1,15 @@
 import 'package:delivast_trial/models/user.dart';
-import 'package:delivast_trial/pages/page_wrapper.dart';
 import 'package:delivast_trial/pages/profile.dart';
 import 'package:delivast_trial/resources/constants.dart';
 import 'package:delivast_trial/resources/images.dart';
 import 'package:delivast_trial/utils/hive_helper.dart';
 import 'package:delivast_trial/utils/injector.dart';
 import 'package:flutter/material.dart';
-import 'package:hive/hive.dart';
-import 'package:hive_flutter/hive_flutter.dart';
+
+import 'login.dart';
 
 class SplashScreen extends StatelessWidget {
   Future<User> init() async {
-    await Hive.initFlutter();
-    await Hive.openBox(delivastBox);
-
-    setupInjector();
-
     // Check for previous auth
     final userMap = injector<HiveHelper>().readData(loginKey);
 
@@ -36,13 +30,13 @@ class SplashScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.connectionState != ConnectionState.done) {
             return Center(
-              child: Image.asset(logoText),
+              child: Image.asset(logoText, width: 250),
             );
           } else if (snapshot.data != null) {
             return ProfilePage(snapshot.data);
           }
 
-          return PageWrapper();
+          return LoginPage();
         },
       ),
     );

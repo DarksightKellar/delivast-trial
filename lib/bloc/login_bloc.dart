@@ -22,8 +22,10 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is PerformLogin) {
       // Set loading state
       yield LoginLoading();
+
       // Initiate login
       final user = await _login(event.email, event.password);
+
       // Trigger login finished state with user
       yield LoginFinished(user);
     }
