@@ -8,6 +8,7 @@ class InputField extends StatelessWidget {
   final bool isPassword;
   final bool enabled;
   final String suffixText;
+  final Widget prefix;
   final EdgeInsetsGeometry margin;
   final EdgeInsetsGeometry contentPadding;
   final String Function(String value) validator;
@@ -21,6 +22,7 @@ class InputField extends StatelessWidget {
     this.controller,
     this.hint,
     this.value,
+    this.prefix,
     this.isPassword = false,
     this.enabled = true,
     this.suffixText,
@@ -74,6 +76,7 @@ class InputField extends StatelessWidget {
             onEditingComplete: onEditingComplete,
             textCapitalization: TextCapitalization.words,
             decoration: InputDecoration(
+              prefixIcon: prefix,
               border: border,
               focusedBorder: border.copyWith(
                 borderSide: BorderSide(
