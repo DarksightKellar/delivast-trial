@@ -119,12 +119,21 @@ class _LoginPageState extends State<LoginPage> {
               ActionButton(
                 label: BlocConsumer<LoginBloc, LoginState>(
                   listener: (context, state) {
-                    if (state is LoginFinished)
+                    if (state is LoginFinished) {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (_) => ProfilePage(state.user),
                         ),
                       );
+                    }
+
+                    if (state is LoginError) {
+                      Scaffold.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('${state.message}'),
+                        ),
+                      );
+                    }
                   },
                   builder: (_, state) {
                     if (state is LoginLoading) {

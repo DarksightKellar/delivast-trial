@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:bloc/bloc.dart';
 import 'package:delivast_trial/core/models/user.dart';
@@ -22,9 +23,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     if (event is PerformLogin) {
       yield LoginLoading();
 
-      final user = await _login(event.email, event.password);
-
-      yield LoginFinished(user);
+      try {
+        final user = await _login(event.email, event.password);
+        yield LoginFinished(user);
+      } catch (e) {
+        yield LoginError(e.message ?? e.toString());
+      }
     }
   }
 
@@ -46,8 +50,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       injector<HiveHelper>().saveData(loginKey, userMap);
 
       return User.fromMap(userMap);
+    } on DioError catch (e) {
+      if (e.error is SocketException) {
+        throw Exception("Bad or no internet connection");
+      } else {
+        throw Exception(e.message);
+      }
     } catch (e) {
-      return null;
+      throw Exception("Something went wrong");
     }
   }
 

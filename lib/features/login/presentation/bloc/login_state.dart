@@ -19,3 +19,12 @@ class LoginFinished extends LoginState {
   @override
   List<Object> get props => [user];
 }
+
+class LoginError extends LoginState {
+  final String message;
+
+  LoginError(this.message);
+
+  @override
+  List<Object> get props => [message];
+}
