@@ -1,12 +1,12 @@
-import 'package:delivast_trial/models/user.dart';
-import 'package:delivast_trial/pages/profile.dart';
+import 'package:delivast_trial/core/models/user.dart';
+import 'package:delivast_trial/features/profile/presentation/pages/profile.dart';
 import 'package:delivast_trial/resources/constants.dart';
 import 'package:delivast_trial/resources/images.dart';
 import 'package:delivast_trial/utils/hive_helper.dart';
 import 'package:delivast_trial/utils/injector.dart';
 import 'package:flutter/material.dart';
 
-import 'login.dart';
+import '../../features/login/presentation/pages/login.dart';
 
 class SplashScreen extends StatelessWidget {
   Future<User> init() async {

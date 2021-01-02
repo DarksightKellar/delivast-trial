@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:delivast_trial/models/user.dart';
+import 'package:delivast_trial/core/models/user.dart';
 import 'package:delivast_trial/resources/constants.dart';
 import 'package:delivast_trial/utils/hive_helper.dart';
 import 'package:delivast_trial/utils/injector.dart';
@@ -20,17 +20,16 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginEvent event,
   ) async* {
     if (event is PerformLogin) {
-      // Set loading state
       yield LoginLoading();
 
-      // Initiate login
       final user = await _login(event.email, event.password);
 
-      // Trigger login finished state with user
       yield LoginFinished(user);
     }
   }
 
+  /// Ideally this would be a Usecase, which would access Dio
+  /// through a Repository and Network layer via DI, instead of directly
   Future<User> _login(String email, String password) async {
     final dio = Dio();
 

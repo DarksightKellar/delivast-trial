@@ -1,18 +1,18 @@
 import 'package:country_pickers/country.dart';
 import 'package:country_pickers/country_pickers.dart';
-import 'package:delivast_trial/models/user.dart';
+import 'package:delivast_trial/core/models/user.dart';
 import 'package:delivast_trial/resources/colors.dart';
 import 'package:delivast_trial/resources/constants.dart';
 import 'package:delivast_trial/resources/images.dart';
 import 'package:delivast_trial/utils/hive_helper.dart';
 import 'package:delivast_trial/utils/injector.dart';
 import 'package:delivast_trial/utils/validator.dart';
-import 'package:delivast_trial/widgets/action_button.dart';
-import 'package:delivast_trial/widgets/input_field.dart';
+import 'package:delivast_trial/core/widgets/action_button.dart';
+import 'package:delivast_trial/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'login.dart';
+import '../../../login/presentation/pages/login.dart';
 
 class ProfilePage extends StatefulWidget {
   final User user;

@@ -1,11 +1,11 @@
-import 'package:delivast_trial/bloc/login_bloc.dart';
-import 'package:delivast_trial/pages/profile.dart';
+import 'package:delivast_trial/features/login/presentation/bloc/login_bloc.dart';
+import 'package:delivast_trial/features/profile/presentation/pages/profile.dart';
 import 'package:delivast_trial/resources/colors.dart';
 import 'package:delivast_trial/resources/constants.dart';
 import 'package:delivast_trial/resources/images.dart';
 import 'package:delivast_trial/utils/validator.dart';
-import 'package:delivast_trial/widgets/action_button.dart';
-import 'package:delivast_trial/widgets/input_field.dart';
+import 'package:delivast_trial/core/widgets/action_button.dart';
+import 'package:delivast_trial/core/widgets/input_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
